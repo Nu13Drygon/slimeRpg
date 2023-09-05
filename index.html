@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Slime Rpg v0.1.0</h1>
+    <div id="gameContainer">
+        <!-- Game Logs -->
+        <div id="gameLogDisplay">
+            <ul id="gameLog"></ul>
+        </div>
+        <div id="characterInfoDisplay">
+            <ul id="characterInfoList"></ul>
+        </div>
+        <!-- Start Btn -->
+        <button id="startGameBtn">Press to Start</button>
+        <!-- EVERYTHING BELOW HERE IS HIDDEN BY DEFAULT -->
+        <div id="characterCreation">
+            <label for="characterSelect">Choose Your Race:</label>
+            <select name="characterSelect" id="characterRaces">
+                <option value="human">Human</option>
+                <option value="elf">Elf</option>
+                <option value="dwarf">Dwarf</option>
+            </select>
+            <label for="characterSelect">Enter you name</label>
+            <input type="text" id="characterNameInput">
+            <button id="createCharacterBtn">Create Character</button>
+        </div>
+    </div>
+    <!-- EVERYTHING BELOW HERE IS HIDDEN BY DEFAULT -->
+    <div id="gameControls">
+        <button id="characterInfoBtn">Character</button>
+        <button id="exploreForestBtn">Explore Forest</button>
+        <div id="exploreControls">
+            <button id="walkAroundBtn">Walk Around</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

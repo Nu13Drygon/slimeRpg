@@ -1,0 +1,44 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+#gameContainer {
+    width: 640px;
+    height: 320px;
+    background-color: blueviolet;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameLogDisplay {
+    overflow: auto;
+}
+
+#characterCreation {
+    display: none;
+    flex-direction: column;
+}
+
+#gameControls {
+    display: none;
+}
+
+#characterInfoDisplay {
+    display: none;
+}
+
+#exploreControls {
+    display: none;
+}
