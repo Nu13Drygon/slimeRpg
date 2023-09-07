@@ -8,8 +8,12 @@ const characterInfoBtn = document.getElementById('characterInfoBtn')
 const exploreForestBtn = document.getElementById('exploreForestBtn')
 const exploreControls = document.getElementById('exploreControls')
 const walkAroundBtn = document.getElementById('walkAroundBtn')
+const battleControls = document.getElementById('battleControls')
+const attackBtn = document.getElementById('attackBtn')
 
 let playerCharacter
+let monster
+
 
 class PlayerCharacter  {
     constructor(playerName, playerRace) {
@@ -23,6 +27,22 @@ class PlayerCharacter  {
         const weapons = ['sword', 'axe', 'dagger'];
         const randomWeaponPicker = Math.floor(Math.random() *3); 
         return weapons[randomWeaponPicker];
+    }
+}
+
+class Monster {
+    constructor() {
+        this.monsterName = this.pickRandomMonster()
+        this.hitPoints;
+    }
+    pickRandomMonster() {
+        const monsters = ['slime', 'goblin', 'orc']
+        const randomMonsterPicker = Math.floor(Math.random() *3); 
+        return monsters[randomMonsterPicker]
+    }
+    generateMonsterStats() {
+        this.hitPoints = 100
+        this.attack = 5
     }
 }
 
@@ -47,6 +67,7 @@ createCharacterBtn.addEventListener('click', () => {
     createGameLog(playerCharacter.introMessage)
 });
 
+// enable the toggling of player Character page
 characterInfoBtn.addEventListener('click', () => {
     const characterInfoDisplay = document.getElementById('characterInfoDisplay')
     const characterInfoList = document.getElementById('characterInfoList')
@@ -119,6 +140,10 @@ function createEncounter() {
 function initiateEncounter(createEncounter) {
     if(createEncounter === "You encounter a Monster") {
         createGameLog(createEncounter)
+        displayBattleControls()
+        monsterEncounter()
+        determineEncounterTurn()
+
     } else if(createEncounter === "You find nothing") {
         createGameLog(createEncounter)
     } else if(createEncounter === "You found an item") {
@@ -127,6 +152,46 @@ function initiateEncounter(createEncounter) {
 }
 
 function monsterEncounter() {
-    
+    monster = new Monster()
+    monster.generateMonsterStats()
+    createGameLogAndDelay(`It's a ${monster.monsterName} with HP: ${monster.hitPoints}`, 1000)
+}
+
+function displayBattleControls() {
+    battleControls.style.display = 'inline-block'
+    walkAroundBtn.style.display = 'none'
+}
+
+function determineEncounterTurn() {
+    let randomTurn = Math.floor(Math.random() *2)
+    if(true) {
+        calculateDamageFromBattle()
+    } else {
+        createGameLog(`It's the Player's turn`)
+    }
+}
+
+function calculateDamageFromBattle(randomTurn) {
+    if(true) {
+        createGameLogAndDelay(`The monster attacks for: ${monster.attack} damage`, 2000)
+
+        let damage = monster.attack
+        playerCharacter.hitPoints = playerCharacter.hitPoints - damage
+
+        createGameLogAndDelay(`You have taken ${damage} damage`, 4000)
+
+        if(playerCharacter.hitPoints <= 0) {
+            createGameLog('YOU DIED')
+        }
+    } else {
+        console.log("player attack")
+    }
+}
+
+// delays to log entries so player experience is less jarring
+function createGameLogAndDelay(log, delayTime) {
+    setTimeout(() => {
+        createGameLog(log)
+    }, delayTime)
 }
 
